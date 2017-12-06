@@ -1,0 +1,25 @@
+{% extends "base.html.twig" %}
+{% block content_page %}
+
+    <h2>Liste des événements :</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Categorie</th>
+                <th>Nb Inscris</th>
+                <th>Nb Jours restant</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for event in events %}
+                <tr>
+                    <td>{{ event.name.fr }}</td>
+                    <td>{{ event.category.name.fr }}</td>
+                    <td>{{ event.nb_register }}</td>
+                    <td>{{ event.nb_day }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

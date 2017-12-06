@@ -1,0 +1,28 @@
+{% extends "base.html.twig" %}
+{% block content_page %}
+    <a href="{{ path('event_registration_add') }}">Inscription</a>
+    <h2>Liste des inscriptions :</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Date d'inscription</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for register in registers %}
+                <tr>
+                    <td>{{ register.lastname }}</td>
+                    <td>{{ register.firstname }}</td>
+                    <td>{{ register.created_at | date('d/m/Y') }}</td>
+                    <td>
+                        <a href="{{ path('event_registration_edit', {'registerId': register.register_id }) }}">Editer</a><br/>
+                        <a href="{{ path('event_registration_delete', {'registerId': register.register_id }) }}">Supprimer</a><br/>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

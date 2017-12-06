@@ -1,0 +1,20 @@
+{% extends "base.html.twig" %}
+{% block content_page %}
+    <h2>Statistiques :</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Mois</th>
+                <th>Nombre d'inscris</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for line in result %}
+                <tr>
+                    <td>{{ line.month }}</td>
+                    <td>{{ line.nb_register }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

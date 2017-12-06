@@ -1,0 +1,31 @@
+index:
+    path: /
+    defaults: { _controller: 'App\Controller\HomeController::hello' }
+
+event_list:
+    path: /events
+    defaults: { _controller: 'App\Controller\ListEventController::show' }
+
+event_list_with_register:
+    path: /eventsregister
+    defaults: { _controller: 'App\Controller\ListEventWithRegisterController::show' }
+
+event_registration_add:
+    path: /events/registration
+    defaults: { _controller: 'App\Controller\RegistrationController::process'}
+
+event_registration_edit:
+    path: /events/registration/{registerId}
+    defaults: { _controller: 'App\Controller\EditRegistrationController::process'}
+
+event_registration_delete:
+    path: /events/registration/delete/{registerId}
+    defaults: { _controller: 'App\Controller\DeleteRegistrationController::process'}
+
+event_registration_list:
+    path: /events/registrations
+    defaults: { _controller: 'App\Controller\ListRegistrationController::show'}
+
+event_registration_stats:
+    path: /events/registrations/statistics
+    defaults: { _controller: 'App\Controller\StatisticsController::show' }

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+        {% block body %}
+            <h2>Menu</h2>
+            <ul>
+                <li><a href="{{ path('event_registration_add') }}">Inscription</a></li>
+                <li><a href="{{ path('event_registration_list') }}">Liste Inscriptions</a></li>
+                <li><a href="{{ path('event_list') }}">Liste Evenements</a></li>
+                <li><a href="{{ path('event_list_with_register') }}">Liste Evenements avec Inscriptions</a></li>
+                <li><a href="{{ path('event_registration_stats') }}">Statistiques Inscris</a></li>
+            </ul>
+            {% block content_page %}
+
+            {% endblock %}
+        {% endblock %}
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

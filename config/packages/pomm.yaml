@@ -1,0 +1,5 @@
+pomm:
+    configuration:
+        db:
+            dsn: "%env(DATABASE_URL)%"
+            session_builder: App\SessionBuilder\DbSessionBuilder

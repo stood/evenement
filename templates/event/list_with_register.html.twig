@@ -1,0 +1,38 @@
+{% extends "base.html.twig" %}
+{% block content_page %}
+    <h2>Liste des événements :</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for event in events %}
+                <tr>
+                    <td>{{ event.name }}</td>
+                </tr>
+                {% if event.registers |length > 0 %}
+                    <tr>
+                        <td>
+                            <table>
+                                <thead>
+                                    <th>Nom</th>
+                                    <th>Prénom</th>
+                                </thead>
+                                <tbody>
+                                    {% for register in event.registers %}
+                                        <tr>
+                                            <td>{{ register.lastname }}</td>
+                                            <td>{{ register.firstname }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
