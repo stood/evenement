@@ -7,7 +7,7 @@
 namespace App\SessionBuilder;
 
 use PommProject\Foundation\Converter\PgHstore;
-use PommProject\Foundation\Session\Session;
+use PommProject\Foundation\Converter\ConverterHolder;
 use PommProject\ModelManager\SessionBuilder;
 
 
@@ -16,13 +16,11 @@ use PommProject\ModelManager\SessionBuilder;
  */
 class DbSessionBuilder extends SessionBuilder
 {
-    protected function postConfigure(Session $session)
+    protected function initializeConverterHolder(ConverterHolder $converter_holder)
     {
-        parent::postConfigure($session);
+        parent::initializeConverterHolder($converter_holder);
 
-        $session
-            ->getPoolerForType('converter')
-            ->getConverterHolder()
+        $converter_holder
             ->registerConverter('Hstore', new PgHstore(), ['public.hstore']);
     }
 }

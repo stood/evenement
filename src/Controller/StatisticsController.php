@@ -17,15 +17,8 @@ class StatisticsController extends Controller
     public function show()
     {
         $sql = <<<SQL
-WITH 
-  windowquery (month, nb_register) 
-  as 
-  (
-    SELECT to_char(register.created_at, 'month') as month,  count(register.register_id) as nb_register FROM application.register register GROUP BY to_char(register.created_at, 'month') 
-  ) 
-SELECT 'Total' as month, SUM(nb_register) as nb_register FROM windowquery UNION ALL SELECT month, nb_register FROM windowquery
+SELECT to_char(register.created_at, 'month') as "month",  count(register.register_id) as nb_register FROM application.register register GROUP BY ROLLUP (to_char(register.created_at, 'month'))
 SQL;
-
         $result = $this->get('pomm')
             ->getDefaultSession()
             ->getQueryManager()

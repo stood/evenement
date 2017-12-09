@@ -6,6 +6,7 @@
 
 namespace App\Controller;
 
+use App\Db\ApplicationSchema\Register;
 use App\Form\Type\RegistrationType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,16 +19,12 @@ class RegistrationController extends Controller
 {
     public function process(Request $request)
     {
-        $register = $this->get('pomm')
-            ->getDefaultSession()
-            ->getModel('\App\Db\ApplicationSchema\RegisterModel')
-            ->createEntity(
-                [
-                    'event'     => null,
-                    'lastname'  => null,
-                    'firstname' => null,
-                    'email'     => null
-            ]);
+        $register = new Register([
+            'event'     => null,
+            'lastname'  => null,
+            'firstname' => null,
+            'email'     => null
+        ]);
 
         $form = $this->createForm(RegistrationType::class, $register);
         $form->handleRequest($request);
