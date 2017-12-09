@@ -6,6 +6,7 @@
 
 namespace App\Controller;
 
+use App\Db\ApplicationSchema\RegisterModel;
 use App\Form\Type\RegistrationType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,7 +21,7 @@ class DeleteRegistrationController extends Controller
     {
         $register = $this->get('pomm')
             ->getDefaultSession()
-            ->getModel('\App\Db\ApplicationSchema\RegisterModel')
+            ->getModel(RegisterModel::class)
             ->deleteByPK(['register_id' => $registerId]);
 
         return $this->redirect($this->generateUrl('event_registration_list'));

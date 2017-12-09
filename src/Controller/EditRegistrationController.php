@@ -6,6 +6,7 @@
 
 namespace App\Controller;
 
+use App\Db\ApplicationSchema\RegisterModel;
 use App\Form\Type\RegistrationType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,7 +21,7 @@ class EditRegistrationController extends Controller
     {
         $register = $this->get('pomm')
             ->getDefaultSession()
-            ->getModel('\App\Db\ApplicationSchema\RegisterModel')
+            ->getModel(RegisterModel::class)
             ->findWithEvent($registerId);
 
         $form = $this->createForm(RegistrationType::class, $register);
@@ -29,7 +30,7 @@ class EditRegistrationController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $this->get('pomm')
                 ->getDefaultSession()
-                ->getModel('\App\Db\ApplicationSchema\RegisterModel')
+                ->getModel(RegisterModel::class)
                 ->updateOne(
                     $register,
                     ['lastname', 'firstname', 'email', 'event_id']

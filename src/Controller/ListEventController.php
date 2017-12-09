@@ -6,6 +6,7 @@
 
 namespace App\Controller;
 
+use App\Db\ApplicationSchema\EventModel;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 
@@ -18,7 +19,7 @@ class ListEventController extends Controller
     {
         $events = $this->get('pomm')
             ->getDefaultSession()
-            ->getModel('\App\Db\ApplicationSchema\EventModel')
+            ->getModel(EventModel::class)
             ->findWithCategoryAndNbRegister();
 
         return $this->render('event/list.html.twig', ['events' => $events]);

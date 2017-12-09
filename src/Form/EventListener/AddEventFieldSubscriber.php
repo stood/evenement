@@ -6,6 +6,7 @@
 
 namespace App\Form\EventListener;
 
+use App\Db\ApplicationSchema\EventModel;
 use PommProject\Foundation\Pomm;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -69,7 +70,7 @@ class AddEventFieldSubscriber implements EventSubscriberInterface
     {
         return $this->pomm
             ->getDefaultSession()
-            ->getModel('\App\Db\ApplicationSchema\EventModel')
+            ->getModel(EventModel::class)
             ->findAll();
     }
 

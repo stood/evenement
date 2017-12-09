@@ -7,6 +7,7 @@
 namespace App\Controller;
 
 use App\Db\ApplicationSchema\Register;
+use App\Db\ApplicationSchema\RegisterModel;
 use App\Form\Type\RegistrationType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -32,7 +33,7 @@ class RegistrationController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $this->get('pomm')
                 ->getDefaultSession()
-                ->getModel('\App\Db\ApplicationSchema\RegisterModel')
+                ->getModel(RegisterModel::class)
                 ->insertOne($register);
 
             return $this->redirect($this->generateUrl('event_registration_list'));

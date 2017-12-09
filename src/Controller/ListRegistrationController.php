@@ -6,6 +6,7 @@
 
 namespace App\Controller;
 
+use App\Db\ApplicationSchema\RegisterModel;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 
@@ -18,7 +19,7 @@ class ListRegistrationController extends Controller
     {
         $registers = $this->get('pomm')
             ->getDefaultSession()
-            ->getModel('\App\Db\ApplicationSchema\RegisterModel')
+            ->getModel(RegisterModel::class)
             ->findAll();
 
         return $this->render('register/list.html.twig', ['registers' => $registers]);
