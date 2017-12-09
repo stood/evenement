@@ -55,11 +55,11 @@ SQL;
                 ':projection' => $projection->formatFieldsWithFieldAlias('event'),
                 ':event'      => $this->getStructure()->getRelation(),
                 ':category'      => $this->getSession()
-                    ->getModel('\App\Db\ApplicationSchema\CategoryModel')
+                    ->getModel(CategoryModel::class)
                     ->getStructure()
                     ->getRelation(),
                 ':register'      => $this->getSession()
-                    ->getModel('\App\Db\ApplicationSchema\RegisterModel')
+                    ->getModel(RegisterModel::class)
                     ->getStructure()
                     ->getRelation()
             ]
@@ -86,7 +86,7 @@ SQL;
                 ':projection' => $projection->formatFieldsWithFieldAlias('event'),
                 ':event'      => $this->getStructure()->getRelation(),
                 ':register'      => $this->getSession()
-                    ->getModel('\App\Db\ApplicationSchema\RegisterModel')
+                    ->getModel(RegisterModel::class)
                     ->getStructure()
                     ->getRelation()
             ]

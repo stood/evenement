@@ -54,7 +54,7 @@ SQL;
                 ':projection' => $projection->formatFieldsWithFieldAlias('register'),
                 ':register'      => $this->getStructure()->getRelation(),
                 ':event'      => $this->getSession()
-                    ->getModel('\App\Db\ApplicationSchema\EventModel')
+                    ->getModel(EventModel::class)
                     ->getStructure()
                     ->getRelation(),
                 ':condition' => (string) $where
