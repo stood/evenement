@@ -36,7 +36,7 @@ class RegistrationController extends Controller
                 ->getModel(RegisterModel::class)
                 ->insertOne($register);
 
-            return $this->redirect($this->generateUrl('event_registration_list'));
+            return $this->redirectToRoute('event_registration_list');
         }
 
         return $this->render('register/create.html.twig', array(

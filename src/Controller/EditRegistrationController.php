@@ -36,7 +36,7 @@ class EditRegistrationController extends Controller
                     ['lastname', 'firstname', 'email', 'event_id']
                 );
 
-            return $this->redirect($this->generateUrl('event_registration_list'));
+            return $this->redirectToRoute('event_registration_list');
         }
 
         return $this->render('register/edit.html.twig', array(

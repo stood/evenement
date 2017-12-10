@@ -24,6 +24,6 @@ class DeleteRegistrationController extends Controller
             ->getModel(RegisterModel::class)
             ->deleteByPK(['register_id' => $registerId]);
 
-        return $this->redirect($this->generateUrl('event_registration_list'));
+        return $this->redirectToRoute('event_registration_list');
     }
 }
