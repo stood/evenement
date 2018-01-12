@@ -1,0 +1,27 @@
+{% extends "base.html.twig" %}
+{% block content_page %}
+    <p>Evenement</p>
+    {{ form_start(form) }}
+    {{ form_row(form.name) }}
+    {{ form_row(form.category) }}
+    <ul id="registration-fields-list"
+        data-prototype="{{ form_widget(form.registrations.vars.prototype)|e }}"
+        data-widget-tags="{{ '<li></li>'|e }}">
+        {% for registration in form.registrations %}
+            <li>
+                {{ form_errors(registration) }}
+                {{ form_widget(registration) }}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <a href="#"
+       class="add-another-collection-widget"
+       data-list="#registration-fields-list">Add another registration</a>
+    <input type="submit" />
+    {{ form_end(form) }}
+{% endblock %}
+{% block javascripts %}
+    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="/js/add-collection-widget.js"></script>
+{% endblock %}

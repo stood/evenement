@@ -24,7 +24,7 @@ class EditRegistrationController extends Controller
             ->getModel(RegisterModel::class)
             ->findWithEvent($registerId);
 
-        $form = $this->createForm(RegistrationType::class, $register);
+        $form = $this->createForm(RegistrationType::class, $register, ['active_subscriber' => true]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

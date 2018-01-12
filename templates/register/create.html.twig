@@ -1,5 +1,9 @@
 {% extends "base.html.twig" %}
 {% block content_page %}
     <p>Inscription</p>
-    {{ form(form) }}
+
+    {{ form_start(form) }}
+    {{ form_row(form) }}
+    <input type="submit" />
+    {{ form_end(form) }}
 {% endblock %}

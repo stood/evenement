@@ -7,6 +7,7 @@
 namespace App\Controller;
 
 use App\Db\ApplicationSchema\RegisterModel;
+use PommProject\Foundation\Pomm;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 
@@ -15,9 +16,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
  */
 class ListRegistrationController extends Controller
 {
-    public function show()
+    public function show(Pomm $pomm)
     {
-        $registers = $this->get('pomm')
+        $registers = $pomm
             ->getDefaultSession()
             ->getModel(RegisterModel::class)
             ->findAll();

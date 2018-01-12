@@ -27,7 +27,7 @@ class RegistrationController extends Controller
             'email'     => null
         ]);
 
-        $form = $this->createForm(RegistrationType::class, $register);
+        $form = $this->createForm(RegistrationType::class, $register, ['active_subscriber' => true]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

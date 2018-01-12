@@ -26,7 +26,7 @@ COMMENT ON TABLE application.event IS 'Event';
 
 CREATE TABLE application.register (
   register_id    SERIAL PRIMARY KEY,
-  event_id       INTEGER                       NOT NULL REFERENCES application.event,
+  event_id       INTEGER                       NOT NULL REFERENCES application.event DEFERRABLE,
   created_at     TIMESTAMP WITHOUT TIME ZONE   NOT NULL DEFAULT now(),
   updated_at     TIMESTAMP WITHOUT TIME ZONE   NULL,
   lastname       VARCHAR(255)                  NOT NULL,

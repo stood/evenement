@@ -30,3 +30,8 @@ services:
       arguments: ['@pomm']
       tags:
         - { name: kernel.event_subscriber}
+
+    App\Form\EventListener\AddCategoryFieldSubscriber:
+      arguments: ['@pomm']
+      tags:
+        - { name: kernel.event_subscriber}

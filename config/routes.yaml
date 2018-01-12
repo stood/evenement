@@ -2,6 +2,10 @@ index:
     path: /
     defaults: { _controller: 'App\Controller\HomeController::hello' }
 
+event_add:
+    path: /event/add
+    defaults: { _controller: 'App\Controller\AddEventController::process' }
+
 event_list:
     path: /events
     defaults: { _controller: 'App\Controller\ListEventController::show' }
